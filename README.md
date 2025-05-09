@@ -10,6 +10,8 @@ Projeto desenvolvido em React.js simulando a funcionalidade de login/logout atra
 
 ![Website/Login Screenshot](./src/assets/images/screenshot-telaLogin.png)
 
+![Website/Login Toast Screenshot](./src/assets/images/screenshot-telaLoginToast.png)
+
 ![Website/Home Screenshot](./src/assets/images/screenshot-telaSistema.png)
 
 

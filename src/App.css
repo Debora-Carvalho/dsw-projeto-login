@@ -63,3 +63,11 @@
     background-color: #e5d4c4;     
     color: #164d59;
 }
+
+.mensagem-erro {
+    color: #E5D4C4;
+    font-weight: 500;
+    margin-top: 12px;
+    text-align: center;
+}
+  

@@ -4,6 +4,8 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import Footer from './components/Footer/Footer';
 import FormLogin from './components/FormLogin/FormLogin.js';
 import ContainerInicio from './components/ContainerInicio/ContainerInicio.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const userLogin = "usuario";
@@ -12,11 +14,11 @@ function App() {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({ user: '', password: '' });
-  const [mensagem, setMensagem] = useState('');
+  const [mensagemErro, setMensagemErro] = useState('');
 
   const handleShowLogin = () => {
     setIsLoginVisible(true);
-    setMensagem('');
+    setMensagemErro('');
   };
 
   const handleInputChange = (e) => {
@@ -29,22 +31,31 @@ function App() {
     const { user, password } = formData;
 
     if (user === userLogin && password === passwordLogin) {
-      setIsLoggedIn(true);
-      setMensagem('');
+      toast.success('Login realizado com sucesso!', {
+        position: 'top-right',
+        autoClose: 3000,
+        theme: 'light',
+      });
+
+      setTimeout(() => {
+        setIsLoggedIn(true);
+        setMensagemErro('');
+      }, 3000);
     } else {
-      setMensagem('Por favor, preencha para fazer login');
+      setMensagemErro('Por favor, preencha para fazer login');
     }
   };
 
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        setFormData({ user: '', password: '' });
-        setIsLoginVisible(false);
-        setMensagem('');
-    };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setFormData({ user: '', password: '' });
+    setIsLoginVisible(false);
+    setMensagemErro('');
+  };
 
   return (
     <div className="App">
+      <ToastContainer />
       <div className='container-logo'>
         devcarvalho
       </div>
@@ -71,13 +82,14 @@ function App() {
               onInputChange={handleInputChange}
               onLogin={handleLogin}
             />
-            <p className='mensagem-login'>{mensagem}</p>
+            {mensagemErro && (
+              <p className='mensagem-erro'>{mensagemErro}</p>
+            )}
           </>
         )}
 
         {isLoggedIn && (
           <>
-            <p className='mensagem-login'>{mensagem}</p>
             <ContainerInicio onLogout={handleLogout} />
           </>
         )}
