@@ -70,4 +70,23 @@
     margin-top: 12px;
     text-align: center;
 }
+
+/* RESPONSIVIDADE : CONTAINER PRINCIPAL */
+@media (max-width: 768px) {
+    .container-conteudo-principal .container-conteudo-principal-titulo {
+        font-size: 10rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .container-conteudo-principal .container-conteudo-principal-titulo {
+        font-size: 7.2rem;
+    }
+}
+
+@media (max-width: 330px) {
+    .container-conteudo-principal .container-conteudo-principal-titulo {
+        font-size: 6rem;
+    }
+}
   

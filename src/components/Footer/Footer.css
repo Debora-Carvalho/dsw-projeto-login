@@ -20,4 +20,12 @@
     text-decoration: underline;
 }
 
+/* RESPONSIVIDADE : FOOTER */
+@media (max-width: 768px) {
+    .footer {
+        padding: 1rem 2rem;
+        white-space: normal;
+    }
+}
+
   
