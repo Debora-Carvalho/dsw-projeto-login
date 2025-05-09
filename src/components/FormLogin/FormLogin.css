@@ -1,0 +1,95 @@
+/* FORMULÁRIO DE LOGIN */
+.container-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: solid 2px #e5d4c4;
+    border-radius: 20px;
+    gap: 20px;
+    padding: 40px;
+    background: rgba(22, 77, 89, 0.056); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); 
+    color: #e5d4c4;
+}
+
+.container-login-titulo {
+    font-size: 2rem;
+}
+
+.container-login-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+    width: 85%;
+}
+
+.container-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-input__icon {
+    font-size: 2rem;
+}
+
+.container-input .login-input {
+    display: flex;
+    width: 70%;
+    border: none;
+    border-bottom: solid 2px #e5d4c4;
+    background-color: transparent; 
+    padding: 8px;
+    outline: none;
+    color: #333; 
+    transition: border-color 0.3s, color 0.3s;
+}
+
+/* Estilo quando o input está em foco */
+.container-input .login-input:focus {
+    border-bottom-color: #164d59;
+    color: #164d59;
+}
+
+/* Estilo quando o input tem algum valor (não vazio) */
+.container-input .login-input:not(:placeholder-shown) {
+    border-bottom-color: #e5d4c4;
+    color: #e5d4c4;
+}
+
+.container-login-links span {
+    font-weight: bold;
+    color: #e5d4c4;
+    cursor: pointer;
+}
+
+.btn-login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 65px;
+    border: solid 2px #e5d4c4;
+    border-radius: 20px;
+    background: rgba(22, 77, 89, 0.056); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); 
+    font-size: 1.2rem;
+    color: #e5d4c4;
+    padding: 10px;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #e5d4c4;     
+    color: #164d59;
+}

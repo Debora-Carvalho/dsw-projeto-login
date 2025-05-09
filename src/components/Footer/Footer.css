@@ -1,0 +1,23 @@
+/* FOOTER */
+.footer {
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100vw;
+    font-size: 0.9rem;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer a {
+    color: #f4d9ba;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+  

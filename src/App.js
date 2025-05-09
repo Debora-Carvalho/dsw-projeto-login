@@ -1,59 +1,93 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { FaUserAstronaut } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
-import { FaRocket } from "react-icons/fa";
-import { MdLogout } from "react-icons/md";
+import { FaArrowRightLong } from "react-icons/fa6";
+import Footer from './components/Footer/Footer';
+import FormLogin from './components/FormLogin/FormLogin.js';
+import ContainerInicio from './components/ContainerInicio/ContainerInicio.js';
 
 function App() {
-    const isLoggedIn = true;
-    const userLogin = "usuario";
-    const passwordLogin = "usuario123";
+  const userLogin = "usuario";
+  const passwordLogin = "usuario123";
 
-    return (
-        <div className="App">
-            <form className='container-login'>
-                <h1>Bem-vindo(a) de volta!</h1>
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [formData, setFormData] = useState({ user: '', password: '' });
+  const [mensagem, setMensagem] = useState('');
 
-                <p>Para entrar no sistema, preencha com seu login e senha</p>
+  const handleShowLogin = () => {
+    setIsLoginVisible(true);
+    setMensagem('');
+  };
 
-                <div className='container-login-inputs'>
-                    <div className='container-input'>
-                        <FaUserAstronaut className='login-input__icon'/>
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-                        <input
-                            className='login-input'
-                            type='text'
-                        />
-                    </div>
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const { user, password } = formData;
 
-                    <div className='container-input'>
-                        <FaLock className='login-input__icon'/>
+    if (user === userLogin && password === passwordLogin) {
+      setIsLoggedIn(true);
+      setMensagem('');
+    } else {
+      setMensagem('Por favor, preencha para fazer login');
+    }
+  };
 
-                        <input
-                            className='login-input'
-                            type='password'
-                        />
-                    </div>
-                </div>
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        setFormData({ user: '', password: '' });
+        setIsLoginVisible(false);
+        setMensagem('');
+    };
 
-                <p>Esqueci minha senha</p>
+  return (
+    <div className="App">
+      <div className='container-logo'>
+        devcarvalho
+      </div>
 
-                <button className='btn-login'>
-                    Entrar
-                    <FaRocket className='btn-login__icon'/>
-                </button>
-            </form>
+      <div className='container-conteudo-principal'>
+        {!isLoginVisible && !isLoggedIn && (
+          <>
+            <p className='container-conteudo-principal-titulo'>Blur</p>
+            <button
+              className='conteudo-principal-botao'
+              onClick={handleShowLogin}
+              title='Clique para ir à pagina de login'
+            >
+              Entrar
+              <FaArrowRightLong className='conteudo-principal-botao__icon' />
+            </button>
+          </>
+        )}
 
-            {/* <div className='container-sistema'>
-                <h1>Bem-vindo de volta!</h1>
-                <button className='btn-logout' type='submit'>
-                    Sair
-                    <MdLogout className='btn-logout__icon' />
-                </button>
-            </div> */}
-        </div>
-    );
+        {isLoginVisible && !isLoggedIn && (
+          <>
+            <FormLogin
+              formData={formData}
+              onInputChange={handleInputChange}
+              onLogin={handleLogin}
+            />
+            <p className='mensagem-login'>{mensagem}</p>
+          </>
+        )}
+
+        {isLoggedIn && (
+          <>
+            <p className='mensagem-login'>{mensagem}</p>
+            <ContainerInicio onLogout={handleLogout} />
+          </>
+        )}
+      </div>
+
+      <div className='container-footer'>
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
 export default App;
